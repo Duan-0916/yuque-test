@@ -1,0 +1,19 @@
+name : Document synchronization
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  publish_to_preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Publish to Preview Knowledge Base
+        uses: git-to-yuque@v1
+        with:
+          yuqueNamespace: eg6z1a/qpbul9
+          yuqueSite: https://mosn-layotto.yuque.com/
