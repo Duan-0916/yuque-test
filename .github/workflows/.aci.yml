@@ -1,10 +1,4 @@
 version: "1.5"
-trigger:
-  branches:
-    - main
-  event:
-    - push
-    - pull_request
 stages:
   - name: 发布到预览知识库
     jobs:
@@ -14,3 +8,6 @@ stages:
           # 预览知识库的命名空间， 【这里按需调整】
           yuqueNamespace: eg6z1a/qpbul9
           yuqueSite: https://mosn-layotto.yuque.com/
+        rules:
+          - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          - if: ${{ github.event_name == 'pull_request' }}
