@@ -1,0 +1,24 @@
+version: "1.5"
+only:
+  triggerType:
+    - push
+    - pullRequest
+  targetBranch:
+    - main
+
+stages:
+  - 发布到预览知识库
+
+发布到预览知识库:
+  stage: 发布到预览知识库
+  component: git-to-yuque
+  inputs:
+    # 预览知识库的命名空间， 【这里按需调整】
+    yuqueNamespace: eg6z1a/qpbul9
+    yuqueSite: https://mosn-layotto.yuque.com/
+  only:
+    triggerType:
+      - pullRequest
+      - push
+    targetBranch:
+      - main
